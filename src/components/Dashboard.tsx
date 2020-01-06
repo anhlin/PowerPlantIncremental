@@ -1,35 +1,23 @@
-import React, { useState } from 'react';
-import { EnergyCounter } from './EnergyCounter';
-import { IncrementButton } from './ui-elements/IncrementButton';
-import { Upgrades } from './Upgrades';
-import { Workers } from './Workers';
+import React, { useState } from 'react'
+import AtomsColumn from './AtomsColumn'
+import SmashColumn from './SmashColumn'
+import SellColumn from './SellColumn'
+import { Row, Col } from 'react-bootstrap'
 
 export const Dashboard: React.FC = () => {
-    const [totalEnergy, setTotalEnergy] = useState(0);
-
-    const [power, setPower] = useState(100);
-
-    const incrementCounter = (inc: number) => {
-        setTotalEnergy(totalEnergy + inc);
-    };
-
     return (
-        <div>
-            <div>
-                <EnergyCounter totalEnergy={totalEnergy} />
-            </div>
-            <div style={{ textAlign: 'center' }}>
-                <IncrementButton amount={power} increment={incrementCounter} />
-            </div>
-            <div style={{ textAlign: 'center' }}>
-                <Workers />
-            </div>
-            <Upgrades
-                totalEnergy={totalEnergy}
-                power={power}
-                setPower={setPower}
-                setTotalEnergy={setTotalEnergy}
-            />
+        <div style={{ textAlign: 'center' }}>
+            <Row>
+                <Col sm={4}>
+                    <AtomsColumn />
+                </Col>
+                <Col sm={4}>
+                    <SmashColumn />
+                </Col>
+                <Col sm={4}>
+                    <SellColumn />
+                </Col>
+            </Row>
         </div>
-    );
-};
+    )
+}
