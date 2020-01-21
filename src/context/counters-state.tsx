@@ -4,9 +4,13 @@ import { CountersContext } from './counters-context'
 const CountersState: React.FC = props => {
     const [totalAtoms, setTotalAtoms] = useState(0)
     const [totalSmashed, setTotalSmashed] = useState(0)
-    const [totalMoney, setTotalMoney] = useState(0)
+    const [totalMoney, setTotalMoney] = useState(5)
 
     const [displayAtoms, setDisplayAtoms] = useState(0)
+
+    useEffect(() => {
+        console.log('display', displayAtoms)
+    }, [displayAtoms])
 
     useEffect(() => {
         const interval = setInterval(() => {

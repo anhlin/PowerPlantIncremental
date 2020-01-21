@@ -9,6 +9,7 @@ const Workers: React.FC<Props> = () => {
     const [workerCost, setWorkerCost] = useState(5)
     const [gatherRate, setGatherRate] = useState(1)
 
+
     const countersContext = useContext(CountersContext)
     const {
         totalMoney,
@@ -30,15 +31,12 @@ const Workers: React.FC<Props> = () => {
         }
     }
 
-    const [workerThread, setWorkerThread] = useState()
-
     useEffect(() => {
         const interval = setInterval(() => {
             gatherAtoms()
         }, 1000)
-        setWorkerThread(interval)
-        return () => clearInterval(workerThread)
-    }, [totalAtoms, totalWorkers])
+        return () => clearInterval(interval)
+    }, [totalWorkers, totalAtoms])
 
     return (
         <div className="item_wrapper">
